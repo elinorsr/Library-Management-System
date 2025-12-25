@@ -1,0 +1,51 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>books</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://kit.fontawesome.com/92d42647e8.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Bruno+Ace&family=Chakra+Petch:wght@500&family=Rajdhani&display=swap"
+  rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="shortcut icon" type="x-icon" href="../../assets/logoImg/SiteLogo.png">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+<nav>
+  <img class="logo" src="../../assets/logoImg/logo.png" alt="logo">
+
+  <label id="icon" (click)="toggleMenu()">
+    <ng-container *ngIf="!isMenuOpen">
+      <i class="fas fa-bars"></i>
+    </ng-container>
+    <ng-container *ngIf="isMenuOpen">
+      <i class="fas fa-times"></i>
+    </ng-container>
+  </label>
+  <ul [ngClass]="{ 'show': isMenuOpen }">
+
+    <li><a href="/">Home</a></li>
+    <li><a href="/books">Books</a></li>
+    <li><a href="/digitalbooks">Digital Books</a></li>
+    <li><a href="/search">Search</a></li>
+    <li><a href="/forfun">forfun</a></li>
+    <li *ngIf="!authService.isLoggedIn" id="login"><a href="/login">Login</a></li>
+    <li *ngIf="authService.isLoggedIn" id="user-profile" class="dropdown" [class.open]="isDropdownOpen">
+      <a href="javascript:void(0);" id="userDropdown" (click)="toggleDropdown()">
+        <ng-container *ngIf="authService.selectedicon">
+          <img class="icon-image" [src]="authService.selectedicon" alt="User icon">
+        </ng-container>
+        <ng-container *ngIf="!authService.selectedicon">
+          <img class="default-icon" src="../../assets/icons/icon12.png" alt="Default icon">
+        </ng-container>
+        {{ authService.userName }} <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="/icon" class="icon">icon</a></li>
+        <li><a href="/login" class="logout" (click)="logout()">Logout</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>

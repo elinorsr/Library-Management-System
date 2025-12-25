@@ -1,0 +1,53 @@
+.container{
+  margin-top: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3); 
+  max-width: 750px;
+}
+
+.icon-options,h2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 0 auto; /* Add margin property to center the icon options */
+  justify-content: center; /* Align icon options in the center horizontally */
+  align-items: center;  
+}
+  
+.icon-option {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+  
+.icon-option img {
+  width: 100px; /* Adjust the width as desired */
+  height: 100px; /* Adjust the height as desired */
+  border-radius: 50%;
+}
+
+.icon-option:hover {
+  transform: scale(1.1); /* Apply a scale transform on hover */
+}
+
+h2{
+  color: whitesmoke;
+  font: 800 
+  26px/3vw RobotoCondensed, Trebuchet MS, Helvetica, Arial, sans-serif; 
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 11vh;   
+}
+
+.sectionOne{
+  min-height: 100vh;
+  width: 100%;
+  background-image:url(../../assets/Cover/35615_hd.jpg);
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  z-index: 0;
+}

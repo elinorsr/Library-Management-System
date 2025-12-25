@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>books</title>
+  <script src="https://kit.fontawesome.com/92d42647e8.js" crossorigin="anonymous"></script>
+  <link rel="shortcut icon" type="x-icon" href="../../assets/logoImg/SiteLogo.png">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: "Lato", sans-serif;
+      background: linear-gradient(-90deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 500% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
+    }
+
+    .banner {
+      width: 100%;  
+      height: 400px; /* Set the height to match the books page banner */
+      background-image: url('../../assets/DigitalbooksImg/banner.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+    header.books {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+      overflow: hidden;
+
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .slider {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    .slider .slide {
+      width: 200px;
+      height: 300px;
+      margin: 0 10px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .slider .slide:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin: -5px auto;
+      max-width: 1080px;
+    }
+
+    .card {
+      height: 350px;
+      width: 230px;
+      background: #000;
+      border-radius: 10px;
+      margin: 10px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      border-radius: 10px;
+      height: 100%;
+      width: 100%;
+      transition: all 0.2s;
+    }
+
+    .card .info {
+      width: 100%;
+      background: linear-gradient(to top, #000 70%, transparent);
+      position: absolute;
+      bottom: -340px;
+      transition: all 0.2s;
+      color: white;
+      padding: 18px;
+      padding-right: 10px;
+    }
+
+    .card:hover .info {
+      bottom: 0;
+      transition: all 0.2s;
+    }
+
+    .card .top-bg {
+      height: 50px;
+      width: 100%;
+      background: linear-gradient(to bottom, #000 4%, transparent);
+      position: absolute;
+      top: 0;
+      transition: all 0.2s;
+    }
+
+    .card .info .books-name {
+      margin-top: 25px;
+      font-size: 16px;
+    }
+
+    .card .info .oth-detail {
+      font-size: 9px;
+      margin-top: 10px;
+      letter-spacing: 0.7px;
+    }
+
+    .card .info .description {
+      font-size: 11px;
+      color: gray;
+      margin-top: 20px;
+      font-weight: 300;
+    }
+
+    .card .info .stars {
+      margin-top: 7px;
+      font-size: 10px;
+    }
+
+    .card .info .stars i {
+      margin-left: 5px;
+      position: relative;
+      left: -5px;
+    }
+
+    .card .info .stars .rating {
+      color: #f3c23f;
+    }
+
+    .cont {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+      margin-bottom: -40px;
+    }
+
+    .no-results {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 913px) {
+      .container {
+        padding-top: 310px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <img src="../../assets/Bookimg/banner.png" alt="banner" class="banner">
+  </div>
+
+  <header class="books">
+    <ul class="slider">
+      <i class="slide s1" routerLink="/collector"></i>
+      <i class="slide s2" routerLink="/hopeless"></i>
+      <i class="slide s3" routerLink="/maybe"></i>
+      <i class="slide s4" routerLink="/Thecat"></i>
+      <i class="slide s5" routerLink="/genesis"></i>
+    </ul>
+  </header>
+
+  <div class="container">
+    <div class="card" *ngFor="let books of books">
+      <img [src]="books.image" class="spidimg">
+      <div class="top-bg"></div>
+      <div class="info">
+        <h3 class="boo-name">{{ books.name }}</h3>
+        <p class="oth-detail">{{ books.age }}  {{ books.time }}  {{ books.author }} | {{ books.year }}</p>
+        <p class="description">{{ books.description }}.</p>
+        <div class="stars">
+          <i class="{{ starClass }}" *ngFor="let starClass of getStarsArray(books.stars)"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<div class="forfun-page">
+  <h1>Book Quiz Game</h1>
+  <div class="quiz-container">
+    <div class="question-section" *ngIf="!quizCompleted">
+      <div *ngFor="let question of questions; let i = index">
+        <div *ngIf="i === currentQuestionIndex">
+          <h2>{{ question.question }}</h2>
+          <div class="options">
+            <button class="option-button" 
+                    [ngClass]="{'correct': selectedOption === question.answer && selectedOptionIndex === optionIndex, 'incorrect': selectedOption !== question.answer && selectedOptionIndex === optionIndex}" 
+                    (click)="answerQuestion(option, optionIndex)" 
+                    *ngFor="let option of question.options; let optionIndex = index">
+              {{ option }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="score-section" *ngIf="quizCompleted">
+      <h2>Quiz Completed!</h2>
+      <p>Your Score: {{ score }}</p>
+      <button class="save-button" (click)="saveScore()">Save Score</button>
+    </div>
+    <div class="score-bar">
+      <h3>Score: {{ score }}</h3>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,152 @@
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  user-select: none;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(45deg, #83a4d4, #b6fbff);
+  perspective: 1000px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.card {
+  background: #fff;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 250px;
+  box-shadow: 0 0 2em rgba(0, 0, 0, 0.2);
+  width: 3500px;
+  transform-style: preserve-3d;
+  transition: transform 0.1s;
+  transform: rotateY(0deg);
+}
+
+.card:hover {
+  transform: rotateY(10deg);
+}
+
+.card h1 {
+  color: #333;
+  margin-bottom: 1em;
+}
+
+.card label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.card .input-with-icon {
+  position: relative;
+  width: 100%;
+}
+
+.card .input-with-icon i {
+  position: absolute;
+  top: 50%;
+  left: 0.75em;
+  transform: translateY(-50%);
+  color: #ccc;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card input[type="text"],
+.card input[type="password"],
+.card input[type="email"] {
+  width: 100%;
+  padding: 0.5em 0.5em 0.5em 2.5em; /* Ensure enough padding for the icon */
+  margin-bottom: 1em;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  background: #f0f0f0;
+  box-shadow: 0 0 2em rgba(0, 0, 0, 0.1);
+  color: #333;
+  z-index: 1;
+}
+
+.card input[type="text"] + i,
+.card input[type="password"] + i,
+.card input[type="email"] + i {
+  position: absolute;
+  top: 50%;
+  left: 0.75em;
+  transform: translateY(-50%);
+  color: #ccc;
+}
+
+.card input[type="text"]:focus + i,
+.card input[type="password"]:focus + i,
+.card input[type="email"]:focus + i {
+  color: #999;
+}
+
+.card input[type="text"]:focus + i,
+.card input[type="password"]:focus + i,
+.card input[type="email"]:focus + i,
+.card input[type="text"]:not(:placeholder-shown) + i,
+.card input[type="password"]:not(:placeholder-shown) + i,
+.card input[type="email"]:not(:placeholder-shown) + i {
+  color: #333;
+}
+
+.card a {
+  color: #0072ff;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.card .error-message {
+  color: #e74c3c;
+  margin-bottom: 1em;
+}
+
+.card .login-status {
+  color: #27ae60;
+  margin-bottom: 1em;
+}
+
+.card button {
+  padding: 0.5em 1em;
+  background: #00c6ff;
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+  background-color: #0056b3;
+}
+
+@media only screen and (max-width: 300px) {
+  .card {
+    width: 270px;
+  }
+}
+
+@media only screen and (min-width: 651px) and (max-width: 1000px) {
+  .card {
+    width: 350px;
+    transform: rotateY(0deg);
+  }
+}

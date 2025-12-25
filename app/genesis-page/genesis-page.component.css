@@ -1,0 +1,22 @@
+@import '../../app/shared-styles/shared-styles.component.css';
+
+.card .info {
+    width: 100%;
+    background: linear-gradient(to top, #e62429 40%, transparent);
+    position: absolute;
+    bottom: -200px;
+    transition: all 0.2s;
+    color: white;
+    padding: 18px;
+    padding-right: 10px;
+    font: 400 16px/1.3 Regular,Trebuchet MS,Helvetica,Arial,sans-serif;
+  }
+  .card .top-bg {
+    height: 50px;
+    width: 100%;
+    background: linear-gradient(to bottom, #e62429 4%, transparent);
+    position: absolute;
+    top: 0px;
+    transition: all 0.2s;
+  }
+  

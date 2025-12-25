@@ -1,0 +1,228 @@
+@font-face{
+  src: url(../../assets/fonts/myfont2.otf);
+  font-family: nos;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  box-sizing: border-box;
+}
+html *, html *:before, html *:after, html *::before, html *::after{
+  box-sizing: inherit;
+}
+
+
+.banner {
+  width: 100%;
+  height: 45vh;
+  margin-top: 3%;
+}
+
+body{
+  padding: 0;
+  margin: 0;
+  font-family:'Montserrat', sans-serif;
+  background: #212025;
+  background: white;
+}
+
+.digitalbookss {
+  width: 64%;
+  height: 100vh;
+  position: relative;
+  margin: 0 auto;
+  top: -100px;
+}
+
+.slider {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  transition: all 0.5s;
+  overflow: hidden; 
+  justify-content: center; 
+  align-items: center;
+  margin-top: calc(0vh + 60px); 
+}
+
+.slider .slide  {
+  width: 35%;
+  height: 50%;
+  position: relative;
+  text-align: center;
+  transition: 0.5s;
+}
+
+.slider .slide:nth-child(1){
+  background: url(../../assets/DigitalbooksImg/Adventures.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left; 
+}
+.slider .slide:nth-child(2){
+  background: url(../../assets/DigitalbooksImg/riceyman.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+.slider .slide:nth-child(3){
+  background: url(../../assets/DigitalbooksImg/Conquest.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+.slider .slide:nth-child(4){
+  background: url(../../assets/DigitalbooksImg/Alchemist.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+.slider .slide:nth-child(5){
+  background: url(../../assets/DigitalbooksImg/invisible2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+.slider .slide:hover{
+  width: 80%;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: -150px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1080px;
+}
+  
+.card {
+  height: 350px;
+  width: 230px;
+  background: black;
+  border-radius: 10px;
+  margin: 10px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.2s;
+}
+  
+.card img {
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  transition: all 0.2s;
+}
+  
+.card .info {
+  width: 100%;
+  background: linear-gradient(to top, #000 70%, transparent);
+  position: absolute;
+  bottom: -340px;
+  transition: all 0.2s;
+  color: white;
+  padding: 18px;
+  padding-right: 10px;
+}
+  
+.card:hover .info {
+  bottom: 0;
+  transition: all 0.2s;
+}
+  
+.card .top-bg {
+  height: 50px;
+  width: 100%;
+  background: linear-gradient(to bottom, #000 4%, transparent);
+  position: absolute;
+  top: 0px;
+  transition: all 0.2s;
+}
+  
+.card .info .digitalbooks-name {
+  margin-top: 25px;
+  font-size: 16px;
+}
+  
+.card .info .oth-detail {
+  font-size: 9px;
+  margin-top: 10px;
+  letter-spacing: 0.7px;
+}
+  
+.card .info .description {
+  font-size: 11px;
+  color: gray;
+  margin-top: 20px;
+  color: white;
+  font-weight: 300;
+}
+  
+.card .info .stars {
+  margin-top: 7px;
+  font-size: 10px;
+}
+  
+.card .info .stars i {
+  margin-left: 5px;
+  position: relative;
+  left: -5px;
+}
+  
+.card .info .stars .rating {
+  color: #f3c23f;
+}
+
+.cont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: -40px;
+
+}
+
+@keyframes textclip {
+  to {
+  background-position: 200% center;
+  }
+}
+
+@media only screen and (max-width : 600px){
+  .digitalbookss {
+    width: 80%;
+    height: 100vh;
+    position: relative;
+    margin: 0 auto;
+    top: -100px;
+  }
+  .banner {
+    width: 100%;
+    height: 45vh;
+    margin-top: 13%;
+  }
+}
+
+@media only screen and (min-width : 768px) and (max-width :786px){
+  .banner {
+    width: 100%;
+    height: 45vh;
+    margin-top: 6%;
+  }
+}
+
+@media only screen and (min-width : 653px) and (max-width :1368px){
+  .banner {
+    width: 100%;
+    height: 45vh;
+    margin-top: 8%;
+  }
+}

@@ -1,0 +1,13 @@
+<section class="sectionOne">
+    <div class="container">
+        <h2>icon Selection</h2>
+        <div class="icon-options">
+          <div class="icon-option" *ngFor="let iconUrl of iconOptions" (click)="handleiconSelection(iconUrl)">
+            <img [src]="iconUrl" alt="icon">
+          </div>
+        </div>
+    </div>
+</section>
+
+
+  

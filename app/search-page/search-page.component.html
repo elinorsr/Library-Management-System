@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Lato", sans-serif;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .search-box {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+    }
+
+    .input-search {
+      height: 50px;
+      width: 50px;
+      border: none;
+      padding: 10px;
+      font-size: 18px;
+      letter-spacing: 2px;
+      outline: none;
+      border-radius: 25px;
+      transition: all 0.5s ease-in-out;
+      padding-right: 40px;
+      color: #151515;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .input-search::placeholder {
+      color: #bbb;
+      font-size: 18px;
+      letter-spacing: 2px;
+      font-weight: 100;
+    }
+
+    .btn-search {
+      width: 50px;
+      height: 50px;
+      border: none;
+      font-size: 20px;
+      font-weight: bold;
+      outline: none;
+      cursor: pointer;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #c6a972;
+      color: #fff;
+      margin-left: -50px;
+      z-index: 1;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-search:hover {
+      background-color: #b1905e;
+    }
+
+    .input-search:focus {
+      width: 300px;
+      border-radius: 25px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      outline: none;
+      padding-right: 50px;
+    }
+
+    .input-search:focus ~ .btn-search {
+      background-color: #b1905e;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-top: auto;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1080px;
+      padding-top: 200px;
+    }
+
+    .card {
+      height: 350px;
+      width: 230px;
+      background: #000;
+      border-radius: 10px;
+      margin: 10px;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .card img {
+      border-radius: 10px;
+      height: 100%;
+      width: 100%;
+      transition: all 0.2s;
+    }
+
+    .card .info {
+      width: 100%;
+      background: linear-gradient(to top, #000 70%, transparent);
+      position: absolute;
+      bottom: -340px;
+      transition: all 0.2s;
+      color: white;
+      padding: 18px;
+      padding-right: 10px;
+    }
+
+    .card:hover .info {
+      bottom: 0;
+      transition: all 0.2s;
+    }
+
+    .card .top-bg {
+      height: 50px;
+      width: 100%;
+      background: linear-gradient(to bottom, #000 4%, transparent);
+      position: absolute;
+      top: 0;
+      transition: all 0.2s;
+    }
+
+    .card .info .digitalbooks-name {
+      margin-top: 25px;
+      font-size: 16px;
+    }
+
+    .card .info .oth-detail {
+      font-size: 9px;
+      margin-top: 10px;
+      letter-spacing: 0.7px;
+    }
+
+    .card .info .description {
+      font-size: 11px;
+      color: gray;
+      margin-top: 20px;
+      font-weight: 300;
+    }
+
+    .card .info .stars {
+      margin-top: 7px;
+      font-size: 10px;
+    }
+
+    .card .info .stars i {
+      margin-left: 5px;
+      position: relative;
+      left: -5px;
+    }
+
+    .card .info .stars .rating {
+      color: #f3c23f;
+    }
+
+    .cont {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+      margin-bottom: -40px;
+    }
+
+    .no-results {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 913px) {
+      .container {
+        padding-top: 310px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="search-box">
+    <button class="btn-search" (click)="handleSearchClick()">
+      <ng-container *ngIf="!isSearching">
+        <i class="fas fa-search"></i>
+      </ng-container>
+      <ng-container *ngIf="isSearching">
+        <i class="fas fa-search"></i>
+      </ng-container>
+    </button>
+    <input type="text" class="input-search" placeholder="Type to Search..." [(ngModel)]="searchQuery"
+      [ngClass]="{'visible': isSearching}" (keyup.enter)="searchResults()" (click)="handleSearchClick()">
+  </div>
+  <div class="container">
+    <div class="card" *ngFor="let item of searchResult">
+      <ng-container *ngIf="item.category === 'books'">
+        <img [src]="item.image" class="spidimg">
+        <div class="top-bg"></div>
+        <div class="info">
+          <h3 class="books">{{ item.name }}</h3>
+          <p class="oth-detail">{{ item.age }}  {{ item.time }}  {{ item.author }} | {{ item.year }}</p>
+          <p class="description">{{ item.description }}.</p>
+          <div class="stars">
+            <i class="{{ starClass }}" *ngFor="let starClass of getStarsArray(item.stars)"></i>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="item.category === 'digital books'">
+        <img [src]="item.image" class="spidimg">
+        <div class="top-bg"></div>
+        <div class="info">
+          <h3 class="books-name">{{ item.name }}</h3>
+          <p class="oth-detail">{{ item.age }}  {{ item.time }}  {{ item.author }} | {{ item.year }}</p>
+          <p class="description">{{ item.description }}.</p>
+          <div class="stars">
+            <i class="{{ starClass }}" *ngFor="let starClass of getStarsArray(item.stars)"></i>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="no-results" *ngIf="alert == true">
+    No results found for "{{ searchQuery }}"
+  </div>
+</body>
+</html>
